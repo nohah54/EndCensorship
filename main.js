@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
 let camera, scene, renderer;
 let raycaster, mouse;
@@ -126,7 +127,7 @@ function addNotification(message, bookTitle) {
     setTimeout(() => {
       notificationElement.style.right = '10px'; 
       notificationElement.style.opacity = '1';
-    }, 10);
+    }, 5);
   
     const notification = { element: notificationElement, timeout: null };
     notification.timeout = setTimeout(() => removeNotification(notificationElement), 10000); 
@@ -173,7 +174,7 @@ function init() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.z = 100;
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
@@ -340,7 +341,7 @@ function animate() {
 
     // Animate books :)
     books.forEach((book, index) => {
-        book.position.lerp(new THREE.Vector3(0, -20, 0), 0.0002);
+        book.position.lerp(new THREE.Vector3(0, 0, 0), 0.0002);
 
         book.rotation.x += book.rotationSpeeds.x;
         book.rotation.y += book.rotationSpeeds.y;
