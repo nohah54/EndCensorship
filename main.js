@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 
 let camera, scene, renderer;
 let raycaster, mouse;
