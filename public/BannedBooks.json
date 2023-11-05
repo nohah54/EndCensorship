@@ -1,4 +1,61 @@
 [
+{
+"Author": "Greenfield, Eloise",
+"Title": "Rosa Parks",
+"BanType": "Banned Pending Investigation",
+"Illustrators": "Ashby, Gil",
+"State": "Florida",
+"District": "Volusia County Schools",
+"RemoveDate": "September 2021",
+"ChallengeOrigin": "Administrator"
+},
+{
+"Author": "Connors, Kathleen",
+"Title": "The Life of Rosa Parks (Famous Lives Series)",
+"BanType": "Banned Pending Investigation",
+"State": "Florida",
+"District": "Duval County Public Schools",
+"RemoveDate": "January 2022",
+"ChallengeOrigin": "Administrator"
+},
+{
+"Author": "Bevan, Thomas E.",
+"Title": "Being Transgender: What You Should Know",
+"BanType": "Banned in Libraries and Classrooms",
+"State": "Tennessee",
+"District": "Collierville Schools",
+"RemoveDate": "February 2022",
+"ChallengeOrigin": "Administrator"
+},
+{
+"Author": "Belge, Kathy",
+"Title": "Queer: The Ultimate LGBTQ Guide for Teens",
+"BanType": "Banned in Libraries and Classrooms",
+"SecondaryAuthors": "Bieschke, Marke",
+"Illustrators": "Robinson, Christopher",
+"State": "Wisconsin",
+"District": "School District of Waukesha",
+"RemoveDate": "December 2021",
+"ChallengeOrigin": "Administrator"
+},
+{
+"Author": "Bell, Derrick",
+"Title": "Faces at the Bottom of the Well: The Permanence of Racism",
+"BanType": "Banned in Classrooms",
+"State": "Pennsylvania",
+"District": "Central York School District",
+"RemoveDate": "August 2021",
+"ChallengeOrigin": "Administrator"
+},
+{
+"Author": "Aciman, André",
+"Title": "Call Me By Your Name (Call Me By Your Name Series)",
+"BanType": "Banned Pending Investigation",
+"State": "Virginia",
+"District": "Spotsylvania County Public Schools",
+"RemoveDate": "November 2021",
+"ChallengeOrigin": "Administrator"
+},
  {
   "Author": "Àbíké-Íyímídé, Faridah",
   "Title": "Ace of Spades",
@@ -51,15 +108,6 @@
   "State": "Virginia",
   "District": "New Kent County Public Schools",
   "RemoveDate": "October 2021",
-  "ChallengeOrigin": "Administrator"
- },
- {
-  "Author": "Aciman, André",
-  "Title": "Call Me By Your Name (Call Me By Your Name Series)",
-  "BanType": "Banned Pending Investigation",
-  "State": "Virginia",
-  "District": "Spotsylvania County Public Schools",
-  "RemoveDate": "November 2021",
   "ChallengeOrigin": "Administrator"
  },
  {
@@ -1884,26 +1932,6 @@
   "ChallengeOrigin": "Administrator"
  },
  {
-  "Author": "Belge, Kathy",
-  "Title": "Queer: The Ultimate LGBTQ Guide for Teens",
-  "BanType": "Banned in Libraries and Classrooms",
-  "SecondaryAuthors": "Bieschke, Marke",
-  "Illustrators": "Robinson, Christopher",
-  "State": "Wisconsin",
-  "District": "School District of Waukesha",
-  "RemoveDate": "December 2021",
-  "ChallengeOrigin": "Administrator"
- },
- {
-  "Author": "Bell, Derrick",
-  "Title": "Faces at the Bottom of the Well: The Permanence of Racism",
-  "BanType": "Banned in Classrooms",
-  "State": "Pennsylvania",
-  "District": "Central York School District",
-  "RemoveDate": "August 2021",
-  "ChallengeOrigin": "Administrator"
- },
- {
   "Author": "Bell, Eric",
   "Title": "Alan Cole Is Not a Coward",
   "BanType": "Banned in Libraries",
@@ -2056,15 +2084,6 @@
   "State": "Texas",
   "District": "North East Independent School District",
   "RemoveDate": "December 2021",
-  "ChallengeOrigin": "Administrator"
- },
- {
-  "Author": "Bevan, Thomas E.",
-  "Title": "Being Transgender: What You Should Know",
-  "BanType": "Banned in Libraries and Classrooms",
-  "State": "Tennessee",
-  "District": "Collierville Schools",
-  "RemoveDate": "February 2022",
   "ChallengeOrigin": "Administrator"
  },
  {
@@ -4013,15 +4032,6 @@
   "State": "Texas",
   "District": "North East Independent School District",
   "RemoveDate": "December 2021",
-  "ChallengeOrigin": "Administrator"
- },
- {
-  "Author": "Connors, Kathleen",
-  "Title": "The Life of Rosa Parks (Famous Lives Series)",
-  "BanType": "Banned Pending Investigation",
-  "State": "Florida",
-  "District": "Duval County Public Schools",
-  "RemoveDate": "January 2022",
   "ChallengeOrigin": "Administrator"
  },
  {
@@ -7806,16 +7816,6 @@
   "State": "Florida",
   "District": "Walton County School District",
   "RemoveDate": "April 2022",
-  "ChallengeOrigin": "Administrator"
- },
- {
-  "Author": "Greenfield, Eloise",
-  "Title": "Rosa Parks",
-  "BanType": "Banned Pending Investigation",
-  "Illustrators": "Ashby, Gil",
-  "State": "Florida",
-  "District": "Volusia County Schools",
-  "RemoveDate": "September 2021",
   "ChallengeOrigin": "Administrator"
  },
  {

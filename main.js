@@ -89,6 +89,8 @@ fadeOverlay.style.transition = 'opacity 3s';
 fadeOverlay.style.zIndex = '1002'; // Ensure it's above everything else
 document.body.appendChild(fadeOverlay);
 
+import music from '/Music.wav'
+
 let notifications = [];
 
 fetch('/BannedBooks.json')
@@ -103,6 +105,18 @@ fetch('/BannedBooks.json')
 
 init();
 animate();
+
+function playSound() {
+  const audio = new Audio(music);
+  audio.type = 'audio/wav';
+
+  // Set the properties of the audio if needed
+  audio.autoplay = true; // play automatically
+  audio.loop = true; // loop the sound
+
+  // Play the sound
+  audio.play().catch(e => console.error('Error playing sound:', e));
+}
 
 function addNotification(message, bookTitle) {
     if (notifications.length >= 5) {
@@ -138,7 +152,6 @@ function addNotification(message, bookTitle) {
   function removeNotification(notificationElement) {
     clearTimeout(notificationElement.timeout);
   
-
     notificationElement.style.opacity = '0';
     notificationElement.style.right = '-500px'; 
 
@@ -187,6 +200,8 @@ function init() {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
     directionalLight.position.set(0, 1, 1).normalize();
     scene.add(directionalLight);
+
+    playSound();
 
     // Handle window resize
     window.addEventListener('resize', onWindowResize, false);
