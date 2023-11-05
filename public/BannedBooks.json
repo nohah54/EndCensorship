@@ -1,17 +1,5 @@
 [
  {
-  "Author": "Author",
-  "Title": "Title",
-  "BanType": "Type of Ban",
-  "SecondaryAuthors": "Secondary Author(s)",
-  "Illustrators": "Illustrator(s)",
-  "Translators": "Translator(s)",
-  "State": "State",
-  "District": "District",
-  "RemoveDate": "Date of Challenge\/Removal",
-  "ChallengeOrigin": "Origin of Challenge"
- },
- {
   "Author": "Àbíké-Íyímídé, Faridah",
   "Title": "Ace of Spades",
   "BanType": "Banned in Libraries and Classrooms",

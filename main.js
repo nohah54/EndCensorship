@@ -7,6 +7,91 @@ const books = []; // Array for books
 
 let bookData = []; // Hold JSON info
 
+const notificationStyle = document.createElement('style');
+notificationStyle.type = 'text/css';
+notificationStyle.innerHTML = `
+  .notification-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 500px;
+  }
+  .notification {
+    background-color: rgba(25, 25, 25, 0.5);
+    color: #fff;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: opacity 0.5s ease, right 0.5s ease-out; 
+    opacity: 0; 
+    right: -500px; 
+  }
+  .bottom-title {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 25px;
+    background-color: rgba(25, 25, 25, 0.8); 
+    color: white;
+    font-size: 1.75em;
+    z-index: 1001;
+  }
+  .notification a:hover {
+    outline: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.1); 
+    transition: background-color 0.3s ease; 
+  }
+
+  .notification a {
+    display: block; 
+    padding: 5px; 
+    transition: background-color 0.3s ease, outline 0.3s ease; 
+    border-radius: 5px;
+}
+`;
+
+let bannedBooksCount = 0; 
+
+const bannedBooksCounter = document.createElement('div');
+bannedBooksCounter.className = 'banned-books-counter';
+bannedBooksCounter.textContent = `no bans on books`;
+bannedBooksCounter.style.position = 'fixed';
+bannedBooksCounter.style.top = '10px';
+bannedBooksCounter.style.left = '10px';
+bannedBooksCounter.style.color = 'white';
+bannedBooksCounter.style.backgroundColor = 'rgba(25, 25, 25, 0.5)';
+bannedBooksCounter.style.padding = '10px';
+bannedBooksCounter.style.borderRadius = '5px';
+bannedBooksCounter.style.zIndex = '1001';
+
+document.body.appendChild(bannedBooksCounter);
+document.head.appendChild(notificationStyle);
+
+const bottomTitle = document.createElement('div');
+bottomTitle.className = 'bottom-title';
+bottomTitle.textContent = 'End media censorship. Gain diverse perspectives.';
+document.body.appendChild(bottomTitle);
+
+const notificationContainer = document.createElement('div');
+notificationContainer.className = 'notification-container';
+document.body.appendChild(notificationContainer);
+
+// Create the fade overlay
+const fadeOverlay = document.createElement('div');
+fadeOverlay.style.position = 'fixed';
+fadeOverlay.style.top = '0';
+fadeOverlay.style.left = '0';
+fadeOverlay.style.width = '100%';
+fadeOverlay.style.height = '100%';
+fadeOverlay.style.backgroundColor = 'black';
+fadeOverlay.style.transition = 'opacity 3s';
+fadeOverlay.style.zIndex = '1002'; // Ensure it's above everything else
+document.body.appendChild(fadeOverlay);
+
+let notifications = [];
+
 fetch('/BannedBooks.json')
   .then(response => response.json())
   .then(data => {
@@ -20,9 +105,62 @@ fetch('/BannedBooks.json')
 init();
 animate();
 
+function addNotification(message, bookTitle) {
+    if (notifications.length >= 5) {
+      removeNotification(notifications[notifications.length - 1].element);
+    }
+  
+    const notificationElement = document.createElement('div');
+    notificationElement.className = 'notification';
+  
+    const notificationLink = document.createElement('a');
+    notificationLink.href = `https://www.google.com/search?q=${encodeURIComponent(bookTitle)}`;
+    notificationLink.target = '_blank'; 
+    notificationLink.textContent = message;
+    notificationLink.style.color = '#fff';
+    notificationLink.style.textDecoration = 'none';
+  
+    notificationElement.appendChild(notificationLink);
+  
+    notificationContainer.prepend(notificationElement); 
+  
+    setTimeout(() => {
+      notificationElement.style.right = '10px'; 
+      notificationElement.style.opacity = '1';
+    }, 10);
+  
+    const notification = { element: notificationElement, timeout: null };
+    notification.timeout = setTimeout(() => removeNotification(notificationElement), 10000); 
+    notifications.unshift(notification);
+  
+    updateNotificationPositions();
+  }
+  
+  function removeNotification(notificationElement) {
+    clearTimeout(notificationElement.timeout);
+  
+
+    notificationElement.style.opacity = '0';
+    notificationElement.style.right = '-500px'; 
+
+    setTimeout(() => {
+      if (notificationContainer.contains(notificationElement)) { 
+        notificationContainer.removeChild(notificationElement);
+      }
+      notifications = notifications.filter(notification => notification.element !== notificationElement);
+      updateNotificationPositions(); 
+    }, 2000); 
+  }
+  
+  
+  function updateNotificationPositions() {
+    notifications.forEach((notification, index) => {
+      notification.element.style.top = `${index * 60}px`;
+    });
+  }
+
 function onMouseMove(event) {
-    // Calculate mouse position in normalized device coordinates
-    // (-1 to +1) for both components
+    // (-1 to +1) for both components !!!!
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
@@ -31,7 +169,7 @@ window.addEventListener('mousemove', onMouseMove, false);
 
 function init() {
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0e0e0e);
+    scene.background = new THREE.Color(0xe8e8e8);
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.z = 100;
@@ -54,8 +192,17 @@ function init() {
     // Handle window resize
     window.addEventListener('resize', onWindowResize, false);
 
-    setInterval(spawnBook, 750); // Spawn a book every 1000ms (1 second) ???
+    setInterval(spawnBook, 2000); // Spawn a book every 2000ms (2 seconds.....)
+    setTimeout(() => {
+        fadeOverlay.style.opacity = '0';
+
+        // After the transition is complete, remove the overlay
+        fadeOverlay.addEventListener('transitionend', () => {
+            fadeOverlay.parentNode.removeChild(fadeOverlay);
+        });
+    }, 500);
 }
+
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -82,7 +229,13 @@ function checkHover(book) {
 
     const distance = point.distanceTo(book.position);
 
-    return distance < 1;
+    if (distance < 1) {
+        // Set the text content of the label to the book's title from userData
+        book.label.textContent = book.userData.Title; // Display the title
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
@@ -93,6 +246,10 @@ function spawnBook() {
     }
 
     const book = new THREE.Group();
+    const bookInfo = bookData.shift();
+
+    bannedBooksCount++;
+    bannedBooksCounter.textContent = bannedBooksCount === 1 ? '1 ban on books' : `${bannedBooksCount} bans on books`;
 
     // Dimensions
     const bookWidth = 1;
@@ -161,17 +318,19 @@ function spawnBook() {
     const distance = camera.near + 1; // Just beyond the near plane
     book.position.copy(camera.position).add(direction.multiplyScalar(distance));
 
-    // Create a div element for the book label
     const label = document.createElement('div');
-    label.className = 'book-label'; // Add a class for CSS styling
-    label.textContent = 'Book Name'; // Replace with your dynamic book name
+    label.className = 'book-label';
+    label.textContent = 'Book Name';
     document.body.appendChild(label);
 
-    // Add a property to your book mesh to keep track of the label element
     book.label = label;
+    book.label.textContent = bookInfo.Title; 
+    book.userData = bookInfo;
 
     scene.add(book);
     books.push(book);
+
+    addNotification(`In ${book.userData.State}, '${book.userData.Title}' has been banned in the ${book.userData.District}.`, book.userData.Title)
 }
 
 function animate() {
@@ -180,7 +339,7 @@ function animate() {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(books);
 
-    // Animate books
+    // Animate books :)
     books.forEach((book, index) => {
         book.position.lerp(new THREE.Vector3(0, -20, 0), 0.0002);
 
