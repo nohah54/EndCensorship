@@ -7,3 +7,6 @@ The notifications are clickable so users can get access to censorsed perspective
 To deploy the application, download the files and open the folder in your choice of code editor (we used VS Code).
 1. In the terminal, run "npx vite" and in Chrome, paste the URL "http://localhost:5173/" (or whatever shows in the npx vite terminal)
 2. You're done! Watch the animation play, with books being thrown into the void.
+
+If you have any issues installing, here are some helpful links (make sure you have npx / npm / node installed on your machine!)
+- https://answers.microsoft.com/en-us/windows/forum/all/powershell-terminal-in-vs-code-make-the-term-make/74d69621-c91e-4929-83c2-2252f0371397
