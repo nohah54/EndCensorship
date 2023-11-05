@@ -1,0 +1,1 @@
+We are using google Clound Run to deploy the web app in a containerized environment and connecting the domain name using Regional external Application Load Balancer
