@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
 let camera, scene, renderer;
 let raycaster, mouse;
