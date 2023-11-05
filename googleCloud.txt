@@ -1,0 +1,3 @@
+We attempted to use google Clound Run to deploy the web app in a containerized environment and connecting the domain name using Regional external Application Load Balancer. 
+However, when you enter the authoritative name servers for Cloud DNS in the name servers section of Google Domains, it can take from 48 to 72 hours to propagate.
+We also tried to use a virtual machine instance to run a basic Apache web server, but the hosting was taking to long to properly connect given the time constraints. 
